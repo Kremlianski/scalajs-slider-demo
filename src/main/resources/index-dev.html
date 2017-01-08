@@ -78,37 +78,7 @@
   height: 20px;
   background-color: red;
 }
-.top, .middle, .center {
-position: absolute;
-width: 150px;
-height: 150px;
-left: -200px;
-top: 10px;
-background-color: blue;
-opacity: 1;
-transition: 0.5s 1s;
-}
-.middle {
-top: 200px;
-transition: 1s 1s;
-background-color: red;
-}
-.top.start, .middle.start, .img.start {
-  left: 10px;
-}
 
-.center {
-top: 200px;
-background-color: green;
-transition: .3s 1.2s;
-}
-.img {
-position: absolute;
-left: -200px;
-transition: 0.5s 1s;
-bottom: 10px;
-transition: .3s 1.2s;
-}
 .loader.up {
     position: absolute;
     height: 200px;
@@ -239,6 +209,26 @@ transition: .3s 1.2s;
     -o-transform: rotate(360deg);
     transform: rotate(360deg);
   }
+}
+
+.car {
+  position: absolute;
+  bottom: 20px;
+  left: -500px;
+  transition: 0.8s ease-in 0.5s;
+}
+.car-in {
+  left: 50px;
+}
+.car1 {
+  position: absolute;
+  bottom: -500px;
+  left: -300px;
+  transition: 0.8s ease-in 0.5s;
+}
+.car1-in {
+  left: 250px;
+  bottom: 5px;
 }
 
     </style>
