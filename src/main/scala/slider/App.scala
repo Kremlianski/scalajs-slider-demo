@@ -28,13 +28,30 @@ object App extends JSApp {
         style = Some(js.Dictionary(
           "backgroundImage" -> "url(img/step1.jpg)"
         )), containers = Seq(
-          SlideContainer(elementType = "img", className = "car", classIn = "car-in", src = "img/car.png")
+          SlideContainer(elementType = "img", className = "car", classIn = "car-in", src = "img/car.png"),
+          SlideContainer(elementType = "block",
+            className = "block",
+            children = Seq(
+              SlideChild(elementType = "block", classIn = "blah-in", className = "blah", text = "Blah"),
+              SlideChild(elementType = "block", classIn = "blah-in", className = "blah blah1", text = "blah"),
+              SlideChild(elementType = "block", classIn = "blah-in", className = "blah blah2", text = "blah")
+            )
+          )
         )),
       SlideProps(
         style = Some(js.Dictionary(
           "backgroundImage" -> "url(img/step2.jpg)"
         )), containers = Seq(
-          SlideContainer(elementType = "img", className = "car1", classIn = "car1-in", src = "img/car1.png")
+          SlideContainer(elementType = "img", className = "car1", classIn = "car1-in", src = "img/car1.png"),
+          SlideContainer(elementType = "block",
+            className = "block1",
+            classIn = "block1-in",
+            children = Seq(
+              SlideChild(elementType = "block", classIn = "blah-1-in", className = "blah-1", text = "Blah"),
+              SlideChild(elementType = "block", classIn = "blah-1-in", className = "blah-1 blah-1-1", text = "blah"),
+              SlideChild(elementType = "block", classIn = "blah-1-in", className = "blah-1 blah-1-2", text = "blah")
+            )
+          )
         ))
 
     )
