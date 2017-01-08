@@ -1,2 +1,1 @@
-
-the project is under developement.
+## An Example of a Slider by using Scalajs-react
