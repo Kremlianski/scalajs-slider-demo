@@ -173,7 +173,6 @@ object Slider {
     .componentDidMount(i => {
       i.backend.timer.map(c => window.clearTimeout(c))
 
-      //////////////////////////////////////////////////////////////////////
       def onLoadFuture(img: HTMLImageElement) = {
         if (img.complete) {
           Future.successful(img.src)
@@ -204,8 +203,6 @@ object Slider {
       Callback(Future.sequence(futures).onComplete(_ => {
         i.backend.nextSlide.runNow()
       }))
-      ////////////////////////////////////////////////////////////////////////////
-      //      Callback(i.backend.timer = Option(window.setTimeout(() => i.backend.nextSlide.runNow(), 4000)))
     })
     .componentWillUnmount(i => Callback(i.backend.timer.map(c => window.clearTimeout(c))))
     .build
