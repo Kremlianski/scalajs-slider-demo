@@ -25,10 +25,16 @@ case class SlideChild(elementType: String, style: Option[js.Dictionary[Any]] = N
                       src: Option[String] = None, link: Option[String] = None, className: Option[String] = None,
                       classIn: Option[String] = None)
 
-case class SliderGenerals(controlsType: Option[String] = None, delay:Int = 4000, firstDelay:Int = 500)
+case class SliderGenerals(controlsType: Option[String] = None, delay: Int = 4000, firstDelay: Int = 500)
 
-case class SlideProps(style: Option[js.Dictionary[Any]] = None, text: Option[String] = None, link: Option[String] = None,
-                      containers: Seq[SlideContainer] = Seq.empty, active: Boolean = false)
+case class SlideProps(
+                       style: Option[js.Dictionary[Any]] = None,
+                       text: Option[String] = None,
+                       className: Option[String] = None,
+                       link: Option[String] = None,
+                       containers: Seq[SlideContainer] = Seq.empty,
+                       active: Boolean = false
+                     )
 
 
 object Slider {
@@ -77,7 +83,10 @@ object Slider {
         }
       }
 
-      <.div(^.className := "slider__slide",
+      <.div(^.classSet1(
+        "slider__slide",
+        p.className.getOrElse("") -> true
+        ),
         activeAtr := p.active,
         ^.style := p.style,
         <.div(^.className := "slider__slide__text",
@@ -122,25 +131,26 @@ object Slider {
           val slide = x._1
           val index = x._2
           Slide(SlideProps(style = slide.style,
+            className = slide.className,
             text = slide.text,
             active = index == $.state.runNow().active,
             link = slide.link,
             containers = slide.containers
           ))
         }), props.generals.controlsType match {
-            case Some(_) => <.div(
-              <.div(^.className := "slider__next",
-                ^.onClick --> nextSlide,
-                <.i(^.className := "fa fa-4x fa-arrow-circle-right")
-              ),
-              <.div(^.className := "slider__previous",
-                ^.onClick --> previousSlide,
-                <.i(^.className := "fa fa-4x fa-arrow-circle-left")
-              )
+          case Some(_) => <.div(
+            <.div(^.className := "slider__next",
+              ^.onClick --> nextSlide,
+              <.i(^.className := "fa fa-4x fa-arrow-circle-right")
+            ),
+            <.div(^.className := "slider__previous",
+              ^.onClick --> previousSlide,
+              <.i(^.className := "fa fa-4x fa-arrow-circle-left")
             )
-            case None => <.div()
+          )
+          case None => <.div()
 
-          }
+        }
 
       )
 
@@ -162,21 +172,23 @@ object Slider {
     })
     .componentDidMount(i => {
       i.backend.timer.map(c => window.clearTimeout(c))
-//////////////////////////////////////////////////////////////////////
+
+      //////////////////////////////////////////////////////////////////////
       def onLoadFuture(img: HTMLImageElement) = {
         if (img.complete) {
           Future.successful(img.src)
         } else {
           val p = Promise[String]()
-          img.onload = { (e: Event) =>{
+          img.onload = { (e: Event) => {
 
             p.success(img.src)
-          }}
+          }
+          }
           p.future
         }
       }
 
-      def getInitialInterval(t:Int) = {
+      def getInitialInterval(t: Int) = {
         val p = Promise[String]()
         window.setTimeout(() => p.success("!"), t)
         p.future
@@ -190,15 +202,16 @@ object Slider {
       }) :+ getInitialInterval(i.props.generals.firstDelay)
 
       Callback(Future.sequence(futures).onComplete(_ => {
-        i.backend.nextSlide.runNow()}))
-////////////////////////////////////////////////////////////////////////////
-//      Callback(i.backend.timer = Option(window.setTimeout(() => i.backend.nextSlide.runNow(), 4000)))
+        i.backend.nextSlide.runNow()
+      }))
+      ////////////////////////////////////////////////////////////////////////////
+      //      Callback(i.backend.timer = Option(window.setTimeout(() => i.backend.nextSlide.runNow(), 4000)))
     })
     .componentWillUnmount(i => Callback(i.backend.timer.map(c => window.clearTimeout(c))))
     .build
 
   def apply(list: List[SlideProps],
             generals: SliderGenerals = SliderGenerals(),
-            preloads:Seq[String] = Seq.empty) = Slider(SliderProps(list, generals, preloads))
+            preloads: Seq[String] = Seq.empty) = Slider(SliderProps(list, generals, preloads))
 
 }
