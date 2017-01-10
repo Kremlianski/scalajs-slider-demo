@@ -11,10 +11,6 @@ import scala.concurrent.{Future, Promise}
 import scala.scalajs.js
 import scala.concurrent.ExecutionContext.Implicits.global
 
-/**
-  * Created by EXXO on 16.12.2016.
-  */
-
 
 case class SlideContainer(elementType: String, className: Option[String] = None,
                           style: Option[js.Dictionary[Any]] = None, children: Seq[SlideChild] = Seq.empty,
