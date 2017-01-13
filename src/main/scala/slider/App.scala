@@ -19,7 +19,7 @@ object App extends JSApp {
 
   def main() {
 
-    SliderCSS.addToDocument()
+    CSS.addToDocument()
 
     val slides = List(
       SlideProps(style = Some(js.Dictionary(

@@ -17,6 +17,8 @@ libraryDependencies ++= Seq(
 )
 libraryDependencies += "com.github.japgolly.scalacss" %%% "core" % "0.5.1"
 
+libraryDependencies += "com.github.japgolly.scalacss" %%% "ext-react" % "0.5.1"
+
 jsDependencies ++= Seq(
 
   "org.webjars.bower" % "react" % "15.4.1"

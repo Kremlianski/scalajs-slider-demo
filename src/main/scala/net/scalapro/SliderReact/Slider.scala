@@ -10,6 +10,9 @@ import org.scalajs.dom.raw.HTMLImageElement
 import scala.concurrent.{Future, Promise}
 import scala.scalajs.js
 import scala.concurrent.ExecutionContext.Implicits.global
+import scalacss.ScalaCssReact._
+
+
 
 
 case class SlideContainer(elementType: String, className: Option[String] = None,
@@ -122,7 +125,7 @@ object Slider {
     def render = {
       val props: SliderProps = $.props.runNow()
       val slides: List[SlideProps] = props.list
-      <.div(^.className := "slider",
+      <.div(CSS.slider,
         slides.zipWithIndex.map(x => {
           val slide = x._1
           val index = x._2
