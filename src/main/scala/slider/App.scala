@@ -6,16 +6,20 @@ import net.scalapro.SliderReact._
 import org.scalajs.dom
 import org.scalajs.dom._
 import org.scalajs.dom.{Event, EventTarget, MouseEvent}
-import org.scalajs.dom.raw.HTMLElement
+import org.scalajs.dom.raw.{HTMLElement, HTMLStyleElement}
 
 import scala.scalajs.js
 import scala.scalajs.js.{Any, Dynamic, JSApp, |}
+import scalacss.Defaults._
+
 
 
 object App extends JSApp {
   implicit def string2Option(s: String) = Some(s)
 
   def main() {
+
+    SliderCSS.addToDocument()
 
     val slides = List(
       SlideProps(style = Some(js.Dictionary(

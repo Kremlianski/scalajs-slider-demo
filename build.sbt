@@ -15,6 +15,7 @@ libraryDependencies ++= Seq(
   "com.github.japgolly.scalajs-react" %%% "core" % "0.11.3",
   "com.github.japgolly.scalajs-react" %%% "extra" % "0.11.3"
 )
+libraryDependencies += "com.github.japgolly.scalacss" %%% "core" % "0.5.1"
 
 jsDependencies ++= Seq(
 
