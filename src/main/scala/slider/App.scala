@@ -25,8 +25,8 @@ object App extends JSApp {
       SlideProps(style = Some(js.Dictionary(
         "backgroundColor" -> "gray"
       )), containers = Seq(
-        SlideContainer(elementType = "block", className = "loader up"),
-        SlideContainer(elementType = "block", className = "loader down"))
+        SlideContainer(elementType = "block", className = CSS.up.htmlClass),
+        SlideContainer(elementType = "block", className = CSS.down.htmlClass))
       ),
       SlideProps(
         style = Some(js.Dictionary(

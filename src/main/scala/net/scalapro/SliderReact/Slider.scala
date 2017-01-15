@@ -82,13 +82,14 @@ object Slider {
         }
       }
 
-      <.div(^.classSet1(
-        "slider__slide",
+      <.div(^.classSet(
         p.className.getOrElse("") -> true
         ),
+        CSS.slide,
         activeAtr := p.active,
         ^.style := p.style,
         <.div(^.className := "slider__slide__text",
+          CSS.text,
           p.text.map(t => <.a(^.href := p.link, t))
         ),
         p.containers.map(x => {
@@ -138,11 +139,11 @@ object Slider {
           ))
         }), props.generals.controlsType match {
           case Some(_) => <.div(
-            <.div(^.className := "slider__next",
+            <.div(CSS.next,
               ^.onClick --> nextSlide,
               <.i(^.className := "fa fa-4x fa-arrow-circle-right")
             ),
-            <.div(^.className := "slider__previous",
+            <.div(CSS.prev,
               ^.onClick --> previousSlide,
               <.i(^.className := "fa fa-4x fa-arrow-circle-left")
             )
