@@ -1,8 +1,11 @@
 ## An Example of a Slider by using Scalajs-react
+### (A separated branch that include ScalaCSS usage)
 
 ![Slider](http://projects.scalapro.net/slider1.gif)
 
 
 See [Demo](http://projects.scalapro.net/scalajs-react-slider/)
 
-See [my article](http://scalapro.net/lets-create-a-slider/) with an explanation of this example
+I have some thoughts about ScalaCSS. So, I hope I'll write a post soon...
+
+
