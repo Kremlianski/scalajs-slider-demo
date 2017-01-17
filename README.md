@@ -1,5 +1,5 @@
 ## An Example of a Slider by using Scalajs-react
-### (A separated branch that include ScalaCSS usage)
+### (A separated branch that includes ScalaCSS usage)
 
 
 
