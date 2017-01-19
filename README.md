@@ -8,6 +8,6 @@
 
 See [Demo](http://projects.scalapro.net/scalajs-react-slider/)
 
-I have some thoughts about ScalaCSS. So, I hope I'll write a post soon...
+See [ScalaCSS. Is it time for using it?](http://scalapro.net/scalacss-is-it-time-for-using-it/)
 
 
