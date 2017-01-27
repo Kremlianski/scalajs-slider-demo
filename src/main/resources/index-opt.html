@@ -342,7 +342,113 @@
   <script type="text/javascript" src="../slider-react-opt.js"></script>
   <script type="text/javascript" src="/workbench.js"></script>
   <script>
-    slider.App().main();
+  var slides =
+  [
+    {
+      style: {
+        "backgroundColor":"red"
+        },
+
+      containers:
+        [
+          {
+             elementType:"block",
+             className: "loader up"
+          },
+          {
+             elementType: "block",
+             className: "loader down"
+          }
+        ]
+      },
+      {
+      style: {
+          "backgroundImage": "url(img/step1.jpg)"
+        },
+      containers: [
+          {
+            elementType: "img",
+            className: "car",
+            classIn: "car-in",
+            src: "img/car.png"
+          },
+          {
+            elementType: "block",
+            className: "block",
+            children:
+              [
+                {
+                  elementType: "block",
+                  classIn: "blah-in",
+                  className: "blah",
+                  text: "Blah"
+                },
+                {
+                  elementType: "block",
+                  classIn: "blah-in",
+                  className: "blah blah1",
+                  text: "blah"
+                },
+                {
+                  elementType: "block",
+                  classIn: "blah-in",
+                  className: "blah blah2",
+                  text: "blah"
+                }
+              ]
+           }
+         ]
+      },
+
+      {
+      style: {
+          "backgroundImage": "url(img/step2.jpg)"
+        },
+      containers: [
+          {
+            elementType: "img",
+            className: "car1",
+            classIn: "car1-in",
+            src: "img/car1.png"
+          },
+          {
+            elementType: "block",
+            className: "block",
+            children:
+              [
+                {
+                  elementType: "block",
+                  classIn: "blah-1-in",
+                  className: "blah-1",
+                  text: "Blah"
+                },
+                {
+                  elementType: "block",
+                  classIn: "blah-1-in",
+                  className: "blah-1 blah-1-1",
+                  text: "blah"
+                },
+                {
+                  elementType: "block",
+                  classIn: "blah-1-in",
+                  className: "blah-1 blah-1-2",
+                  text: "blah"
+                }
+              ]
+           }
+         ]
+      }
+    ];
+
+    var sliderObject = {list: slides,
+      generals: {firstDelay: 1000, delay: 5000},
+      preloads: ["img/step1.jpg", "img/car.png", "img/step2.jpg", "img/car1.png"]
+    }
+
+
+
+
+    slider.App().main1(sliderObject);
 
   </script>
 </body>

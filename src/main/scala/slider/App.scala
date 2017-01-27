@@ -1,21 +1,22 @@
 package slider
 
 import japgolly.scalajs.react._
-import japgolly.scalajs.react.vdom.prefix_<^._
+import net.scalapro.SliderReact.Slider.SliderProps
 import net.scalapro.SliderReact._
 import org.scalajs.dom
-import org.scalajs.dom._
-import org.scalajs.dom.{Event, EventTarget, MouseEvent}
-import org.scalajs.dom.raw.HTMLElement
-
 import scala.scalajs.js
-import scala.scalajs.js.{Any, Dynamic, JSApp, |}
+import scala.scalajs.js._
+import scala.scalajs.js.annotation.JSExport
 
 
 object App extends JSApp {
   implicit def string2Option(s: String) = Some(s)
+  def main(): Unit ={
 
-  def main() {
+  }
+  @JSExport
+  def main1(json: js.Object | Boolean = false) {
+
 
     val slides = List(
       SlideProps(style = Some(js.Dictionary(
@@ -31,11 +32,11 @@ object App extends JSApp {
           SlideContainer(elementType = "img", className = "car", classIn = "car-in", src = "img/car.png"),
           SlideContainer(elementType = "block",
             className = "block",
-            children = Seq(
+            children = Some(Seq(
               SlideChild(elementType = "block", classIn = "blah-in", className = "blah", text = "Blah"),
               SlideChild(elementType = "block", classIn = "blah-in", className = "blah blah1", text = "blah"),
               SlideChild(elementType = "block", classIn = "blah-in", className = "blah blah2", text = "blah")
-            )
+            ))
           )
         )),
       SlideProps(
@@ -46,19 +47,28 @@ object App extends JSApp {
           SlideContainer(elementType = "block",
             className = "block1",
             classIn = "block1-in",
-            children = Seq(
+            children = Some(Seq(
               SlideChild(elementType = "block", classIn = "blah-1-in", className = "blah-1", text = "Blah"),
               SlideChild(elementType = "block", classIn = "blah-1-in", className = "blah-1 blah-1-1", text = "blah"),
               SlideChild(elementType = "block", classIn = "blah-1-in", className = "blah-1 blah-1-2", text = "blah")
-            )
+            ))
           )
         ))
 
     )
-    ReactDOM.render(Slider(list = slides,
-      generals = SliderGenerals(firstDelay = 1000, delay = 5000),
-      preloads = Seq("img/step1.jpg", "img/car.png", "img/step2.jpg", "img/car1.png")),
-      dom.document.getElementById("target"))
+
+
+    val sliderProps: SliderProps = json match {
+      case x:js.Object => x.asInstanceOf[SliderPropsJS].toSliderProps
+      case x if x == false => SliderProps(list = slides,
+        generals = SliderGenerals(firstDelay = 1000, delay = 5000),
+        preloads = Seq("img/step1.jpg", "img/car.png", "img/step2.jpg", "img/car1.png"))
+    }
+
+    val slider = Slider(sliderProps.list, sliderProps.generals, sliderProps.preloads)
+
+
+    ReactDOM.render( slider, dom.document.getElementById("target"))
   }
 }
 

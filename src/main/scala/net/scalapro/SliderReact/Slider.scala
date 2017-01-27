@@ -2,18 +2,15 @@ package net.scalapro.SliderReact
 
 import japgolly.scalajs.react.vdom.prefix_<^._
 import japgolly.scalajs.react._
-import org.scalajs.dom
 import org.scalajs.dom._
-import org.scalajs.dom.html.Image
 import org.scalajs.dom.raw.HTMLImageElement
-
 import scala.concurrent.{Future, Promise}
 import scala.scalajs.js
 import scala.concurrent.ExecutionContext.Implicits.global
 
 
 case class SlideContainer(elementType: String, className: Option[String] = None,
-                          style: Option[js.Dictionary[Any]] = None, children: Seq[SlideChild] = Seq.empty,
+                          style: Option[js.Dictionary[Any]] = None, children: Option[Seq[SlideChild]] = Some(Seq.empty),
                           classIn: Option[String] = None, src: Option[String] = None,
                           link: Option[String] = None, text: Option[String] = None)
 
@@ -90,7 +87,7 @@ object Slider {
         ),
         p.containers.map(x => {
           renderElement(x.elementType, x.className,
-            x.style, x.classIn, x.src, x.link, x.text, x.children)
+            x.style, x.classIn, x.src, x.link, x.text, x.children.getOrElse(Seq.empty))
         }
         )
       )
