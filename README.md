@@ -1,15 +1,15 @@
 ## An Example of a Slider by using Scalajs-react
 
-![Slider](http://projects.scalapro.net/slider1.gif)
+![Slider](http://exxo.ru/projects_scalapro/slider1.gif)
 
 
-See [Demo](http://projects.scalapro.net/scalajs-react-slider/)
+See [Demo](http://exxo.ru/projects_scalapro/scalajs-react-slider/)
 
 ### Articles:
 
-[Let's create a Slider](http://scalapro.net/lets-create-a-slider/)
+[Let's create a Slider](http://blog.exxo.ru/lets-create-a-slider/)
 
-[Slider 2: a JavaScript object instead of case classes](http://scalapro.net/javascript-object-instead-of-case-classes/)
+[Slider 2: a JavaScript object instead of case classes](http://blog.exxo.ru/javascript-object-instead-of-case-classes/)
 
 
 
